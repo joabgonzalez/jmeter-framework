@@ -1,5 +1,5 @@
 # Base de Jmater Tsoft
-FROM joabgonzalez/jmt-base
+FROM joabgonzalez/jmt-base:hites
 
 # Metadatos
 LABEL author="joabgonzalez" jmeter="master"
