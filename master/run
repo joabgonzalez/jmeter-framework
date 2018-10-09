@@ -1,0 +1,4 @@
+test=$(echo $1 | cut -d"." -f 1)
+date=`date "+%Y%m%d%H%M%S"`
+#jmeter -n -t $1 -l results/$test-$date.jtl -R $2
+jmeter -n -t $1 -R $2
