@@ -7,7 +7,7 @@ services:
     # stdin_open: true
     # tty: true
     environment:
-      GIT: "git clone https://joabtsoft@bitbucket.org/joabtsoft/hites-cyber.git"
+      GIT: "https://joabtsoft@bitbucket.org/joabtsoft/hites-cyber.git"
     volumes:
       - "jmeter-results:/jmeter/apache-jmeter/bin/results"
     networks:
@@ -29,7 +29,7 @@ services:
     depends_on:
       - "master"
     environment:
-      GIT: "git clone https://joabtsoft@bitbucket.org/joabtsoft/hites-cyber.git"
+      GIT: "https://joabtsoft@bitbucket.org/joabtsoft/hites-cyber.git"
     networks:
       - "performance"
     # deploy:
