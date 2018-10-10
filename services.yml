@@ -1,60 +1,6 @@
 # Performance Framework
 version: "3.7"
 services:
-  master:
-    image: "joabgonzalez/jmt-master"
-    hostname: "jmeter-master"
-    # stdin_open: true
-    # tty: true
-    environment:
-      GIT: "https://joabtsoft@bitbucket.org/joabtsoft/hites-cyber.git"
-    volumes:
-      - "jmeter-results:/jmeter/apache-jmeter/bin/results"
-    networks:
-      - "performance"
-    deploy:
-      placement:
-        constraints:
-          - "node.role == manager"
-      resources:
-        limits:
-          cpus: "1.5"
-          memory: "3072M"
-        reservations:
-          cpus: "1.5"
-          memory: "3072M"
-  slave:
-    image: "joabgonzalez/jmts:hites"
-    hostname: "jmeter-slave"
-    depends_on:
-      - "master"
-    environment:
-      GIT: "https://joabtsoft@bitbucket.org/joabtsoft/hites-cyber.git"
-    networks:
-      - "performance"
-    deploy:
-      replicas: 25
-      placement:
-        constraints:
-          - "node.role == worker"
-      resources:
-        limits:
-          cpus: "1.5"
-          memory: "3072M"
-        reservations:
-          cpus: "1.5"
-          memory: "3072M"
-  # redis:
-  #   image: "redis"
-  #   hostname: "redis"
-  #   ports:
-  #     - "6379:6379"
-  #   networks:
-  #     - "performance"
-  #   deploy:
-  #     placement:
-  #       constraints:
-  #         - "node.role == manager"
   influxdb:
     image: "influxdb"
     hostname: "influxdb"
@@ -87,6 +33,62 @@ services:
       placement:
         constraints:
           - "node.role == manager"
+  master:
+    image: "joabgonzalez/jmt-master"
+    hostname: "jmeter-master"
+    # stdin_open: true
+    # tty: true
+    depends_on:
+      - "grafana"
+    environment:
+      GIT: "https://joabtsoft@bitbucket.org/joabtsoft/hites-cyber.git"
+    volumes:
+      - "jmeter-results:/jmeter/apache-jmeter/bin/results"
+    networks:
+      - "performance"
+    deploy:
+      placement:
+        constraints:
+          - "node.role == manager"
+      resources:
+        limits:
+          cpus: "1.5"
+          memory: "3072M"
+        reservations:
+          cpus: "1.5"
+          memory: "3072M"
+  slave:
+    image: "joabgonzalez/jmt-slave"
+    hostname: "jmeter-slave"
+    depends_on:
+      - "master"
+    environment:
+      GIT: "https://joabtsoft@bitbucket.org/joabtsoft/hites-cyber.git"
+    networks:
+      - "performance"
+    deploy:
+      replicas: 10
+      placement:
+        constraints:
+          - "node.role == worker"
+      resources:
+        limits:
+          cpus: "1.5"
+          memory: "3072M"
+        reservations:
+          cpus: "1.5"
+          memory: "3072M"
+  # redis:
+  #   image: "redis"
+  #   hostname: "redis"
+  #   ports:
+  #     - "6379:6379"
+  #   networks:
+  #     - "performance"
+  #   deploy:
+  #     placement:
+  #       constraints:
+  #         - "node.role == manager"
   telegraf:
     image: "joabgonzalez/telegraf"
     hostname: "telegraf-{{.Task.Slot}}"
