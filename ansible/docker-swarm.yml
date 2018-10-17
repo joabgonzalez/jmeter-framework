@@ -1,0 +1,16 @@
+---
+- name: Crear cluster de Docker
+  hosts: manager
+  tasks:
+    - name: Crear manager del cluster
+      shell: docker swarm init
+    - name: Obtener token para worker
+      shell: docker swarm join-token -q worker
+      register: worker_token
+
+- name: Agregar nodos al cluster de Docker
+  hosts: workers
+  tasks:
+    - name: Agregar worker al cluster
+      shell: "docker swarm join --token {{hostvars['manager01']['worker_token']['stdout']}} {{hostvars['manager01']['ansible_eth0']['ipv4']['address']}}:2377"
+...

@@ -1,0 +1,38 @@
+---
+- name: Aprovisionar Grafana
+  hosts: manager
+  tasks: 
+    - name: Generando base64 de autenticacion
+      shell: echo -n admin:admin | base64
+      register: token
+    # - name: Password
+    #   uri: 
+    #     url: http://{{ansible_host}}/api/user/password
+    #     method: PUT
+    #     headers:
+    #       Accept: application/json
+    #       Content-Type: application/json
+    #       Authorization: Basic {{hostvars['manager01']['token']['stdout']}}
+    #     body: "{{ lookup('file','./files/grafana-passwd.json') }}"
+    #     body_format: json
+    - name: Creando datasource
+      uri: 
+        url: http://{{ansible_host}}/api/datasources
+        method: POST
+        headers:
+          Accept: application/json
+          Content-Type: application/json
+          Authorization: Basic {{hostvars['manager01']['token']['stdout']}}
+        body: "{{ lookup('file','./files/grafana-datasource.json') }}"
+        body_format: json
+    - name: Creando dashboard
+      uri: 
+        url: http://{{ansible_host}}/api/dashboards/db
+        method: POST
+        headers:
+          Accept: application/json
+          Content-Type: application/json
+          Authorization: Basic {{hostvars['manager01']['token']['stdout']}}
+        body: "{{ lookup('file','./files/grafana-dashboard.json') }}"
+        body_format: json
+...

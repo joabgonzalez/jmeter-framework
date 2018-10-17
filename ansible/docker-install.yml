@@ -1,0 +1,33 @@
+---
+- name: Instalar ultima version de Docker
+  hosts: servers
+  tasks:
+    - name: Eliminar versiones anteriores de Dockers
+      become: true
+      apt: name={{item}} state=absent
+      with_items:
+        - docker
+        - docker-engine
+        - docker.io
+    - name: Instalar dependencias
+      become: true
+      apt: name={{item}} update_cache=yes
+      with_items:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+    - name: Agregar Docker GPG key
+      become: true
+      apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+    - name: Agregar repositorio de Docker
+      become: true
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+    - name: Instalar Docker
+      become: true
+      apt: name=docker-ce update_cache=yes
+    - name: Ejecutar Docker sin sudo
+      become: true
+      shell: usermod -aG docker linux
+...
