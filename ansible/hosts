@@ -1,0 +1,14 @@
+[all_servers:vars]
+host_key_checking = False
+ansible_ssh_user=linux
+ansible_ssh_private_key_file = ./KeyPair-a300.pem
+
+[all_servers:children]
+manager
+workers
+
+[manager]
+170.84.209.24
+
+[workers]
+170.84.209.108
