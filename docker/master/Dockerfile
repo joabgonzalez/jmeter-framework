@@ -5,11 +5,11 @@ FROM joabgonzalez/jmt-base
 LABEL author="joabgonzalez" jmeter="master"
 
 # Archivos
-COPY run master.sh ./
+COPY run.sh master.sh ./
 
 # Ejecutar
 RUN mkdir results \
-    && chmod +x run master.sh
+    && chmod +x run.sh master.sh
 
 # Puertos
 EXPOSE 60000

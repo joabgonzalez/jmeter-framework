@@ -6,7 +6,7 @@ ARG JMETER_VERSION=3.3
 
 # Dependencias
 RUN apt-get -y update \
-    && apt-get install -y --no-install-recommends telnet iputils-ping nmap git \
+    && apt-get install -y --no-install-recommends telnet iputils-ping unzip git \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir /performance
 
@@ -14,13 +14,13 @@ RUN apt-get -y update \
 WORKDIR /performance
 
 # Jmeter + Librerias
-COPY apache-jmeter-${JMETER_VERSION}.tgz lib.tgz ./
+COPY apache-jmeter-${JMETER_VERSION}.zip lib.zip ./
 
 # Ejecutar
-RUN tar -zxvf apache-jmeter-${JMETER_VERSION}.tgz \
+RUN unzip apache-jmeter-${JMETER_VERSION}.zip \
     && mv apache-jmeter-${JMETER_VERSION} apache-jmeter \
-    && tar -zxvf lib.tgz --directory /performance/apache-jmeter \
-    && rm -f apache-jmeter-${JMETER_VERSION}.tgz lib.tgz apache-jmeter/*.DS_Store
+    && unzip lib.zip -d /performance/apache-jmeter \
+    && rm -f *.zip apache-jmeter/*.DS_Store
 
 # Variable de Entorno
 ENV JMETER_HOME /performance/apache-jmeter
