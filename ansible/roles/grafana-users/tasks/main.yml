@@ -2,7 +2,7 @@
   shell: echo -n admin:admin | base64
   register: token
 
-- name: Creando usuario performance
+- name: Creando usuario tsoft
   uri: 
     url: http://{{ansible_host}}/api/admin/users
     method: POST
