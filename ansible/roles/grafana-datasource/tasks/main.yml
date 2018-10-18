@@ -1,0 +1,14 @@
+- name: Generando base64 de autenticacion
+  shell: echo -n admin:tsoftadmin | base64
+  register: token
+
+- name: Creando datasource
+  uri: 
+    url: http://{{ansible_host}}/api/datasources
+    method: POST
+    headers:
+      Accept: application/json
+      Content-Type: application/json
+      Authorization: Basic {{hostvars['manager01']['token']['stdout']}}
+    body: "{{ lookup('file','grafana-datasource.json') }}"
+    body_format: json

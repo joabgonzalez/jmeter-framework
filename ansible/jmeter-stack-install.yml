@@ -23,4 +23,5 @@
 - name: Configuracion Inicial de Grafana
   hosts: manager
   roles:
-    - grafana-config
+    - grafana-users
+    - grafana-datasource
