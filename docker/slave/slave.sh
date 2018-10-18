@@ -1,3 +1,4 @@
+#!/bin/sh
 mkdir git-tmp
 git clone $1 git-tmp/jmeter
 mv git-tmp/jmeter/*.csv .
