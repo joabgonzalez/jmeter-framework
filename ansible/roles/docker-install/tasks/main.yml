@@ -1,0 +1,16 @@
+- name: Instala dependencias
+  apt: name={{item}} update_cache=yes
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+- name: Agrega GPG Key
+  apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+- name: Agrega Repositorio
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+- name: Instala Docker
+  apt: name=docker-ce update_cache=yes
+- name: Ejecutar Docker sin sudo
+  shell: usermod -aG docker linux

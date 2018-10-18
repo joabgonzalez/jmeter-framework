@@ -1,0 +1,36 @@
+- name: Generando base64 de autenticacion
+  shell: echo -n admin:admin | base64
+  register: token
+
+- name: Creando datasource
+  uri: 
+    url: http://{{ansible_host}}/api/datasources
+    method: POST
+    headers:
+      Accept: application/json
+      Content-Type: application/json
+      Authorization: Basic {{hostvars['manager01']['token']['stdout']}}
+    body: "{{ lookup('file','grafana-datasource.json') }}"
+    body_format: json
+
+- name: Creando usuario performance
+  uri: 
+    url: http://{{ansible_host}}/api/admin/users
+    method: POST
+    headers:
+      Accept: application/json
+      Content-Type: application/json
+      Authorization: Basic {{hostvars['manager01']['token']['stdout']}}
+    body: "{{ lookup('file','grafana-user.json') }}"
+    body_format: json
+
+- name: Actualizando password de admin
+  uri: 
+    url: http://{{ansible_host}}/api/user/password
+    method: PUT
+    headers:
+      Accept: application/json
+      Content-Type: application/json
+      Authorization: Basic {{hostvars['manager01']['token']['stdout']}}
+    body: "{{ lookup('file','grafana-passwd.json') }}"
+    body_format: json

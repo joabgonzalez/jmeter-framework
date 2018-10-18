@@ -1,0 +1,2 @@
+- name: Agregar worker al cluster
+  shell: "docker swarm join --token {{hostvars['manager01']['worker_token']['stdout']}} {{hostvars['manager01']['ansible_eth0']['ipv4']['address']}}:2377"

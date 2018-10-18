@@ -1,0 +1,5 @@
+- name: Crear manager del cluster
+  shell: docker swarm init
+- name: Obtener token para worker
+  shell: docker swarm join-token -q worker
+  register: worker_token

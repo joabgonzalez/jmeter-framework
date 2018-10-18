@@ -1,0 +1,26 @@
+- name: Instala Docker
+  hosts: servers
+  become: true
+  roles:
+    - docker-uninstall
+    - docker-install
+
+- name: Inicia Swarm
+  hosts: manager
+  roles:
+    - docker-swarm-init
+
+- name: Agrega Workers al Swarm
+  hosts: workers
+  roles:
+    - docker-swarm-join
+
+- name: Inicia Stack de Jmeter
+  hosts: manager
+  roles:
+    - docker-stack
+
+- name: Configuracion Inicial de Grafana
+  hosts: manager
+  roles:
+    - grafana-config
