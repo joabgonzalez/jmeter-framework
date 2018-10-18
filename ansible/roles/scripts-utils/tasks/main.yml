@@ -1,0 +1,5 @@
+- name: Crear carpeta performance
+  file: path=/home/linux/performance/utils state=directory
+
+- name: Copiar archivo yaml de servicios
+  copy: src=*.sh dest=/home/linux/performance/utils

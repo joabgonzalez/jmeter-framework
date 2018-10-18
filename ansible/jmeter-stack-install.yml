@@ -20,6 +20,11 @@
   roles:
     - docker-stack
 
+- name: Scripts de utilidad
+  hosts: servers
+  roles:
+    - scripts-utils
+
 - name: Configuracion Inicial de Grafana
   hosts: manager
   roles:

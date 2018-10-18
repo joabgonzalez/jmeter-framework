@@ -1,3 +1,3 @@
-docker service scale slave=0
-sleep .5
-docker service scale slave=$1
+docker service scale jmeter-stack_slave=0
+sleep 1
+docker service scale jmeter-stack_slave=$1
