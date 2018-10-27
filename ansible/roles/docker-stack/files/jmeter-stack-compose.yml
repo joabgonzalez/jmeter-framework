@@ -36,8 +36,8 @@ services:
   master:
     image: "joabgonzalez/jmt-master"
     hostname: "jmeter-master"
-    # stdin_open: true
-    # tty: true
+    stdin_open: true
+    tty: true
     environment:
       GIT: "https://joabtsoft@bitbucket.org/joabtsoft/hites-cyber.git"
     volumes:
