@@ -24,11 +24,13 @@
 
 - name: Scripts de utilidad
   hosts: servers
+  become: true
   roles:
     - scripts-utils
 
 - name: Configuracion Inicial de Grafana
   hosts: manager
+  become: true
   roles:
     - grafana-users
     - grafana-datasource
