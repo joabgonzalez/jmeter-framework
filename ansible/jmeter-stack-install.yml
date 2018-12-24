@@ -2,21 +2,23 @@
   hosts: servers
   become: true
   roles:
-    - docker-uninstall
     - docker-install
 
 - name: Inicia Swarm
   hosts: manager
+  become: true
   roles:
     - docker-swarm-init
 
 - name: Agrega Workers al Swarm
   hosts: workers
+  become: true
   roles:
     - docker-swarm-join
 
 - name: Inicia Stack de Jmeter
   hosts: manager
+  become: true
   roles:
     - docker-stack
 
