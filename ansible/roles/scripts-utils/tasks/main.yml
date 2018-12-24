@@ -1,5 +1,14 @@
 - name: Crear carpeta performance
   file: path=/home/linux/performance/utils state=directory
 
-- name: Copiar archivo yaml de servicios
-  copy: src=*.sh dest=/home/linux/performance/utils
+- name: Copiar archivo para obtener ip de los esclavos
+  copy: src=getSlavesIp.sh dest=/home/linux/performance/utils
+
+- name: Copiar archivo para ejecutar pruebas
+  copy: src=runTest.sh dest=/home/linux/performance/utils
+
+- name: Copiar archivo para obtener log de la prueba
+  copy: src=getResults.sh dest=/home/linux/performance/utils
+
+- name: Copiar archivo para regenerar los esclavos
+  copy: src=regenerateSlaves.sh dest=/home/linux/performance/utils
