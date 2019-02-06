@@ -1,10 +1,10 @@
 {
-    "name":"influxdb",
-    "type":"influxdb",
-    "url":"http://localhost:8086",
-    "access":"proxy",
-    "database":"performance",
-    "user":"performance",
-    "password":"performance",
-    "basicAuth":false
+  "name": "influxdb",
+  "type": "influxdb",
+  "url": "http://influxdb:8086",
+  "access": "proxy",
+  "database": "performance",
+  "user": "performance",
+  "password": "performance",
+  "basicAuth": false
 }

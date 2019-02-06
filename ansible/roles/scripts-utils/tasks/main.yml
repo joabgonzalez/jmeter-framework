@@ -10,5 +10,8 @@
 - name: Copiar archivo para obtener log de la prueba
   copy: src=getResults.sh dest=/home/linux/performance/utils
 
+- name: Copiar archivo para regenerar el master
+  copy: src=regenerateMaster.sh dest=/home/linux/performance/utils
+
 - name: Copiar archivo para regenerar los esclavos
   copy: src=regenerateSlaves.sh dest=/home/linux/performance/utils

@@ -21,7 +21,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "5.3.1"
+      "version": "5.4.3"
     },
     {
       "type": "panel",
@@ -97,10 +97,10 @@
   },
   "description": "This dashboard shows live load test metrics provided by JMeter",
   "editable": true,
-  "gnetId": 8422,
+  "gnetId": 8425,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1539808677421,
+  "iteration": 1549479421642,
   "links": [],
   "panels": [
     {
@@ -426,6 +426,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Load",
       "tooltip": {
@@ -785,6 +786,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Error Response Codes",
       "tooltip": {
@@ -948,7 +950,7 @@
         "#ef843c",
         "#d44a3a"
       ],
-      "datasource": null,
+      "datasource": "$data_source",
       "decimals": 0,
       "format": "none",
       "gauge": {
@@ -1017,6 +1019,7 @@
               "type": "fill"
             }
           ],
+          "hide": false,
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT sum(\"countError\") FROM \"$measurement_name\" WHERE (\"transaction\" = 'all' AND \"application\" =~ /^$application$/) AND $timeFilter GROUP BY time([[aggregation]]s) fill(null)",
@@ -1172,6 +1175,7 @@
         }
       ],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Transactions Response Times (95th pct)",
       "tooltip": {
@@ -1314,6 +1318,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Errors",
       "tooltip": {
@@ -1443,6 +1448,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Errors",
       "tooltip": {
@@ -1828,6 +1834,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Response Times (95th pct) vs Threads",
       "tooltip": {
@@ -2044,6 +2051,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Error Response Codes vs Load",
       "tooltip": {
@@ -2220,6 +2228,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Error Response Codes vs Threads",
       "tooltip": {
@@ -2394,6 +2403,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Requests vs Error Response Codes",
       "tooltip": {
@@ -2599,6 +2609,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Requests",
       "tooltip": {
@@ -2976,6 +2987,7 @@
         }
       ],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Response Times",
       "tooltip": {
@@ -3498,6 +3510,7 @@
       "valueName": "total"
     }
   ],
+  "refresh": "5s",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [],
@@ -3505,6 +3518,7 @@
     "list": [
       {
         "current": {
+          "selected": true,
           "text": "influxdb",
           "value": "influxdb"
         },
@@ -3522,6 +3536,7 @@
         "allValue": null,
         "current": {},
         "datasource": "$data_source",
+        "definition": "",
         "hide": 0,
         "includeAll": false,
         "label": "Application",
@@ -3543,6 +3558,7 @@
         "allValue": null,
         "current": {},
         "datasource": "$data_source",
+        "definition": "SHOW TAG VALUES FROM \"jmeter\" WITH KEY = \"transaction\" WHERE \"application\" =~ /^$application$/ AND \"transaction\" != 'internal' AND \"transaction\" != 'all'",
         "hide": 0,
         "includeAll": false,
         "label": "Transaction",
@@ -3581,7 +3597,7 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
+          "selected": true,
           "text": "5",
           "value": "5"
         },
@@ -3654,7 +3670,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "joabgonzalez/jmeter-dashboard2",
+  "title": "Tsoft Load Test Dashboard",
   "uid": "3yTe3Bcik",
-  "version": 1
+  "version": 7
 }
