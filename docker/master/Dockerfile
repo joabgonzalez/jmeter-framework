@@ -5,11 +5,11 @@ FROM joabgonzalez/jmt-base
 LABEL author="joabgonzalez" jmeter="master"
 
 # Archivos
-COPY run.sh master.sh ./
+COPY run.sh ./
 
 # Ejecutar
 RUN mkdir results \
-    && chmod +x run.sh master.sh
+    && chmod +x run.sh
 
 # Puertos
 EXPOSE 60000
@@ -21,4 +21,4 @@ ENV _JAVA_OPTIONS "-Xms512m -Xmx2560m"
 VOLUME ${JMETER_HOME}/bin/results
 
 # Jmeter Maestro
-ENTRYPOINT sh master.sh $GIT
+ENTRYPOINT /bin/bash
