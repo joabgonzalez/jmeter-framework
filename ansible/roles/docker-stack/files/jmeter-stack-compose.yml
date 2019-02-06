@@ -38,8 +38,6 @@ services:
     hostname: "jmeter-master"
     stdin_open: true
     tty: true
-    environment:
-      GIT: "https://joabtsoft:Tsoft2018@bitbucket.org/joabtsoft/demo-jmeter.git"
     volumes:
       - "results:/jmeter/apache-jmeter/bin/results"
     networks:
@@ -60,12 +58,10 @@ services:
     hostname: "jmeter-slave"
     depends_on:
       - "master"
-    environment:
-      GIT: "https://joabtsoft:Tsoft2018@bitbucket.org/joabtsoft/demo-jmeter.git"
     networks:
       - "performance"
     deploy:
-      replicas: 10
+      replicas: 2
       placement:
         constraints:
           - "node.role == worker"

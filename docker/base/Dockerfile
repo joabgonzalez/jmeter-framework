@@ -1,15 +1,18 @@
 # Base de OpenJDK
-FROM openjdk:8-jre-slim
+FROM openjdk:8-jre-alpine
 
 # Argumentos de la Compilacion
 ARG JMETER_VERSION=3.3
-ARG GIT=http://joab.gonzalez:Tsoft2018@hit.tsoftlatam.com:57990/scm/hit/cyberdaymayo2019.git
 
 # Dependencias
-RUN apt-get -y update \
-    && apt-get install -y --no-install-recommends telnet iputils-ping unzip git \
-    && rm -rf /var/lib/apt/lists/* \
+RUN apk add --update iputils unzip git && \
+    rm -rf /var/cache/apk/* \
     && mkdir /performance
+
+# RUN apt-get -y update \
+#     && apt-get install -y --no-install-recommends telnet iputils-ping unzip git \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && mkdir /performance
 
 # Espacio de trabajo
 WORKDIR /performance
@@ -19,12 +22,8 @@ COPY apache-jmeter-${JMETER_VERSION}.zip ./
 
 # Ejecutar
 RUN unzip apache-jmeter-${JMETER_VERSION}.zip \
-    && mv apache-jmeter-${JMETER_VERSION} apache-jmeter \
-    && git clone ${GIT} git-tmp/jmeter \
-    && cp -vrf git-tmp/jmeter/bin/*.jmx apache-jmeter/bin/. \
-    && cp -vrf git-tmp/jmeter/bin/*.csv apache-jmeter/bin/. \
-    && cp -vrf git-tmp/jmeter/lib/* apache-jmeter/lib/. \
-    && rm -vrf *.zip apache-jmeter/*.DS_Store git-tmp/jmeter
+    && mv -vf apache-jmeter-${JMETER_VERSION} apache-jmeter \
+    && rm -vrf *.zip
 
 # Variable de Entorno
 ENV JMETER_HOME /performance/apache-jmeter
