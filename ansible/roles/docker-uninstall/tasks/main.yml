@@ -1,6 +1,7 @@
-- name: Desinstala versiones previas
+- name: Desinstala docker
   apt: name={{item}} state=absent
   with_items:
     - docker
     - docker-engine
     - docker.io
+    - docker-ce

@@ -1,0 +1,14 @@
+- name: Crear carpeta de utilidades
+  file: path=/home/linux/performance/utils state=directory owner=linux group=linux
+
+- name: Copiar archivo para ejecutar pruebas
+  copy: src=runTest.sh dest=/home/linux/performance/utils owner=linux group=linux
+
+- name: Copiar archivo para obtener log de la prueba
+  copy: src=getResults.sh dest=/home/linux/performance/utils owner=linux group=linux
+
+- name: Copiar archivo para regenerar el master
+  copy: src=regenerateMaster.sh dest=/home/linux/performance/utils owner=linux group=linux
+
+- name: Copiar archivo para regenerar los esclavos
+  copy: src=regenerateSlaves.sh dest=/home/linux/performance/utils owner=linux group=linux

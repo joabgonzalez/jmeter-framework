@@ -1,0 +1,5 @@
+- name: Obtener IP de los esclavos
+  hosts: workers
+  become: true
+  roles:
+    - docker-slaves-ip

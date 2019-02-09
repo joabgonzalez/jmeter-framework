@@ -1,0 +1,8 @@
+- name: Crear carpeta de resultados
+  file: path=/home/linux/performance state=directory owner=linux group=linux
+
+- name: Copiar archivo yaml de servicios
+  copy: src=jmeter-stack-compose.yml dest=/home/linux/performance owner=linux group=linux
+
+- name: Ejecutar servicios del stack de Jmeter
+  shell: docker stack deploy -c ./performance/jmeter-stack-compose.yml jmeter-stack
