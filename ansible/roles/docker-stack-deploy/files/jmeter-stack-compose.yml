@@ -33,6 +33,19 @@ services:
       placement:
         constraints:
           - "node.role == manager"
+  visualizer:
+    image: "dockersamples/visualizer"
+    hostname: "visualizer"
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - "performance"
+    deploy:
+      placement:
+        constraints:
+          - "node.role == manager"
   master:
     image: "joabgonzalez/jmt-master"
     hostname: "jmeter-master"

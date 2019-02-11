@@ -25,7 +25,7 @@ EXPOSE 60000
 ENV _JAVA_OPTIONS "-Xms512m -Xmx2560m"
 
 # Directorios
-VOLUME ${JMETER_HOME}/bin/results
+VOLUME ["/performance/apache-jmeter/bin/results"]
 
 # Jmeter Maestro
 ENTRYPOINT /bin/sh

@@ -5,7 +5,7 @@ FROM openjdk:8-jre-alpine
 ARG JMETER_VERSION=3.3
 
 # Dependencias
-RUN apk add --update iputils unzip git && \
+RUN apk add --update iputils git unzip zip && \
     rm -rf /var/cache/apk/* \
     && mkdir /performance
 
