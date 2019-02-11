@@ -3,3 +3,9 @@
   become: true
   roles:
     - docker-slaves-ip
+
+- name: Crear archivo de ip
+  hosts: manager
+  become: true
+  roles:
+    - docker-slaves-ip-file

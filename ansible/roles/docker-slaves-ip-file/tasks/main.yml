@@ -1,0 +1,9 @@
+- name: Crear carpeta de utilidades
+  file: path=/home/linux/performance/utils state=directory owner=linux group=linux
+
+- name: Genrando archivo con direccion IP de los esclavos
+  copy:
+    content: "{% for host in groups.workers %}{% set first_loop = loop.index %}{% for result in hostvars[host]['ip']['results'] %}{% if first_loop == 1 and loop.index == 1 %}{{result.stdout}}{% else %},{{result.stdout}}{% endif %}{% endfor %}{% endfor %}"
+    dest: /home/linux/performance/utils/ipAddressSlaves.csv
+    owner: linux
+    group: linux

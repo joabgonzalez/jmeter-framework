@@ -24,16 +24,19 @@
 
 - name: Scripts de utilidad para el manager
   hosts: manager
+  become: true
   roles:
     - scripts-utils-manager
 
 - name: Scripts de utilidad para los workers
   hosts: workers
+  become: true
   roles:
     - scripts-utils-workers
 
 - name: Configuracion Inicial de Grafana
   hosts: manager
+  become: true
   roles:
     - grafana-users
     - grafana-datasource

@@ -12,3 +12,6 @@
 
 - name: Copiar archivo para regenerar los esclavos
   copy: src=regenerateSlaves.sh dest=/home/linux/performance/utils owner=linux group=linux
+
+- name: Copiar archivo para reiniciar el stack
+  copy: src=resetStack.sh dest=/home/linux/performance/utils owner=linux group=linux
