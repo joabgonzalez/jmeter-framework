@@ -1,4 +1,4 @@
-- name: Crear carpeta de resultados
+- name: Crear carpeta performance
   file: path=/home/linux/performance state=directory owner=linux group=linux
 
 - name: Copiar archivo yaml de servicios

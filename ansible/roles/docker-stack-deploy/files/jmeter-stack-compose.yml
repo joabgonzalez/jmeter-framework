@@ -74,7 +74,7 @@ services:
     networks:
       - "performance"
     deploy:
-      replicas: 2
+      replicas: 70
       placement:
         constraints:
           - "node.role == worker"
