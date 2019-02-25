@@ -1,17 +1,17 @@
 - name: Crear carpeta de utilidades
-  file: path=/home/linux/performance/utils state=directory owner=linux group=linux
+  file: path=/home/linux/performance/utils state=directory owner={{hostvars['servers'].ansible_ssh_user}} group={{hostvars['servers'].ansible_ssh_user}}
 
 - name: Copiar archivo para ejecutar pruebas
-  copy: src=runTest.sh dest=/home/linux/performance/utils owner=linux group=linux
+  copy: src=runTest.sh dest=/home/linux/performance/utils owner={{hostvars['servers'].ansible_ssh_user}} group={{hostvars['servers'].ansible_ssh_user}}
 
 - name: Copiar archivo para obtener log de la prueba
-  copy: src=getResults.sh dest=/home/linux/performance/utils owner=linux group=linux
+  copy: src=getResults.sh dest=/home/linux/performance/utils owner={{hostvars['servers'].ansible_ssh_user}} group={{hostvars['servers'].ansible_ssh_user}}
 
 - name: Copiar archivo para regenerar el master
-  copy: src=regenerateMaster.sh dest=/home/linux/performance/utils owner=linux group=linux
+  copy: src=regenerateMaster.sh dest=/home/linux/performance/utils owner={{hostvars['servers'].ansible_ssh_user}} group={{hostvars['servers'].ansible_ssh_user}}
 
 - name: Copiar archivo para regenerar los esclavos
-  copy: src=regenerateSlaves.sh dest=/home/linux/performance/utils owner=linux group=linux
+  copy: src=regenerateSlaves.sh dest=/home/linux/performance/utils owner={{hostvars['servers'].ansible_ssh_user}} group={{hostvars['servers'].ansible_ssh_user}}
 
 - name: Copiar archivo para reiniciar el stack
-  copy: src=resetStack.sh dest=/home/linux/performance/utils owner=linux group=linux
+  copy: src=resetStack.sh dest=/home/linux/performance/utils owner={{hostvars['servers'].ansible_ssh_user}} group={{hostvars['servers'].ansible_ssh_user}}
