@@ -1,8 +1,8 @@
 - name: Crear carpeta performance
-  file: path=/home/linux/performance state=directory owner={{hostvars['servers'].ansible_ssh_user}} group={{hostvars['servers'].ansible_ssh_user}}
+  file: path=/home/linux/performance state=directory owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Copiar archivo yaml de servicios
-  copy: src=jmeter-stack-compose.yml dest=/home/linux/performance owner={{hostvars['servers'].ansible_ssh_user}} group={{hostvars['servers'].ansible_ssh_user}}
+  template: src=jmeter-stack-compose.yml.j2 dest=/home/linux/performance/jmeter-stack-compose.yml owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Ejecutar servicios del stack de Jmeter
   shell: docker stack deploy -c ./performance/jmeter-stack-compose.yml jmeter-stack

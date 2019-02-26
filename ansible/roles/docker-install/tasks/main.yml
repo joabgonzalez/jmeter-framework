@@ -13,4 +13,4 @@
 - name: Instala Docker
   apt: name=docker-ce update_cache=yes
 - name: Ejecutar Docker sin sudo
-  shell: usermod -aG docker {{hostvars['servers'].ansible_ssh_user}}
+  shell: usermod -aG docker {{ hostvars['manager01']['ansible_ssh_user'] }}

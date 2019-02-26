@@ -19,7 +19,7 @@ services:
         constraints:
           - "node.role == manager"
   grafana:
-    image: "grafana/grafana:latest"
+    image: "grafana/grafana"
     hostname: "grafana"
     depends_on:
       - "influxdb"
@@ -74,7 +74,7 @@ services:
     networks:
       - "performance"
     deploy:
-      replicas: 70
+      replicas: {{ hostvars['manager01']['jmeter_stack_slaves_replicas'] }}
       placement:
         constraints:
           - "node.role == worker"
