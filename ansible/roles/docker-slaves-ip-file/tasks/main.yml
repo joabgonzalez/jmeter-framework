@@ -1,9 +1,9 @@
 - name: Crear carpeta de utilidades
-  file: path=/home/linux/performance/utils state=directory owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+  file: path=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils state=directory owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Genrando archivo con direccion IP de los esclavos
   copy:
     content: "{% for host in groups.workers %}{% set first_loop = loop.index %}{% for result in hostvars[host]['ip']['results'] %}{% if first_loop == 1 and loop.index == 1 %}{{result.stdout}}{% else %},{{result.stdout}}{% endif %}{% endfor %}{% endfor %}"
-    dest: /home/linux/performance/utils/ipAddressSlaves.csv
-    owner: linux
-    group: linux
+    dest: /home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils/ipAddressSlaves.csv
+    owner: "{{ hostvars['manager01']['ansible_ssh_user'] }}"
+    group: "{{ hostvars['manager01']['ansible_ssh_user'] }}"

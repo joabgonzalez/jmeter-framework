@@ -1,17 +1,17 @@
 - name: Crear carpeta de utilidades
-  file: path=/home/linux/performance/utils state=directory owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+  file: path=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils state=directory owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Copiar archivo para ejecutar pruebas
-  copy: src=runTest.sh dest=/home/linux/performance/utils owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+  template: src=runTest.sh.j2 dest=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils/runTest.sh owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Copiar archivo para obtener log de la prueba
-  copy: src=getResults.sh dest=/home/linux/performance/utils owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+  template: src=getResults.sh.j2 dest=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils/getResults.sh owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Copiar archivo para regenerar el master
-  copy: src=regenerateMaster.sh dest=/home/linux/performance/utils owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+  template: src=regenerateMaster.sh.j2 dest=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils/regenerateMaster.sh owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Copiar archivo para regenerar los esclavos
-  copy: src=regenerateSlaves.sh dest=/home/linux/performance/utils owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+  template: src=regenerateSlaves.sh.j2 dest=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils/regenerateSlaves.sh owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Copiar archivo para reiniciar el stack
-  copy: src=resetStack.sh dest=/home/linux/performance/utils owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+  template: src=resetStack.sh.j2 dest=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils/resetStack.sh owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}

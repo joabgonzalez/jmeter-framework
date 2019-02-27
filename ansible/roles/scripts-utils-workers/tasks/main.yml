@@ -1,5 +1,5 @@
 - name: Crear carpeta performance
-  file: path=/home/linux/performance/utils state=directory owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+  file: path=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils state=directory owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Copiar archivo para obtener ip de los esclavos
-  copy: src=getSlavesIp.sh dest=/home/linux/performance/utils owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+  template: src=getSlavesIp.sh.j2 dest=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils/getSlavesIp.sh owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
