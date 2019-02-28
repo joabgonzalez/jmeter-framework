@@ -5,4 +5,4 @@
   template: src=jmeter-stack-compose.yml.j2 dest=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/jmeter-stack-compose.yml owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Ejecutar servicios del stack de Jmeter
-  shell: docker stack deploy -c ./performance/jmeter-stack-compose.yml jmeter-stack
+  shell: docker stack deploy -c /home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/jmeter-stack-compose.yml jmeter-stack
