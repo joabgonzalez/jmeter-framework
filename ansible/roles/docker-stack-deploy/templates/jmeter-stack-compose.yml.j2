@@ -47,12 +47,14 @@ services:
         constraints:
           - "node.role == manager"
   master:
-    image: "joabgonzalez/jmt-master"
+    image: "tsoftglobal/jmeter:master"
     hostname: "jmeter-master"
     stdin_open: true
     tty: true
     volumes:
       - "results:/jmeter/apache-jmeter/bin/results"
+    environment:
+      - "GIT={{ hostvars['manager01']['jmeter_stack_git'] }}"
     networks:
       - "performance"
     deploy:
@@ -67,14 +69,16 @@ services:
           cpus: "1.5"
           memory: "3072M"
   slave:
-    image: "joabgonzalez/jmt-slave"
+    image: "tsoftglobal/jmeter:slave"
     hostname: "jmeter-slave"
     depends_on:
       - "master"
+    environment:
+      - "GIT={{ hostvars['manager01']['jmeter_stack_git'] }}"
     networks:
       - "performance"
     deploy:
-      replicas: {{ hostvars['manager01']['jmeter_stack_slaves_replicas'] }}
+      replicas: {{ hostvars['manager01']['jmeter_stack_slave_replicas'] }}
       placement:
         constraints:
           - "node.role == worker"

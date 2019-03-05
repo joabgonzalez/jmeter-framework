@@ -5,22 +5,17 @@ FROM openjdk:8-jre-alpine
 ARG JMETER_VERSION=3.3
 
 # Dependencias
-RUN apk add --update iputils git unzip zip && \
+RUN apk add --update git unzip && \
     rm -rf /var/cache/apk/* \
     && mkdir /performance
-
-# RUN apt-get -y update \
-#     && apt-get install -y --no-install-recommends telnet iputils-ping unzip git \
-#     && rm -rf /var/lib/apt/lists/* \
-#     && mkdir /performance
 
 # Espacio de trabajo
 WORKDIR /performance
 
-# Jmeter
+# Copiando Jmeter
 COPY apache-jmeter-${JMETER_VERSION}.zip ./
 
-# Ejecutar
+# Preparar Jmeter
 RUN unzip apache-jmeter-${JMETER_VERSION}.zip \
     && mv -vf apache-jmeter-${JMETER_VERSION} apache-jmeter \
     && rm -vrf *.zip
@@ -33,4 +28,4 @@ ENV PATH ${JMETER_HOME}/bin:${PATH}
 WORKDIR ${JMETER_HOME}/bin
 
 # Metadatos
-LABEL author="joabgonzalez" jmeter="base" jmeter_version=${JMETER_VERSION}
+LABEL author="joabgonzalez" tag="base"

@@ -1,4 +1,4 @@
-- name: Crear carpeta performance
+- name: Crear carpeta de utilidades
   file: path=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils state=directory owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
 
 - name: Copiar archivo para obtener ip de los esclavos
