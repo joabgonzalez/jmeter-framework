@@ -1,5 +1,5 @@
 # Base de Jmater Tsoft
-FROM joabgonzalez/jmeter:base
+FROM tsoftglobal/jmeter:base
 
 # Metadatos
 LABEL author="joabgonzalez" tag="slave"
