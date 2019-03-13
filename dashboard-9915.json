@@ -100,7 +100,7 @@
   "gnetId": 8425,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1551451474494,
+  "iteration": 1552502649142,
   "links": [],
   "panels": [
     {
@@ -478,7 +478,7 @@
       ],
       "datasource": "${DS_INFLUXDB}",
       "decimals": 0,
-      "format": "none",
+      "format": "locale",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -592,7 +592,7 @@
       ],
       "datasource": "$data_source",
       "decimals": 0,
-      "format": "none",
+      "format": "locale",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -1057,397 +1057,411 @@
       "valueName": "total"
     },
     {
-      "columns": [],
-      "datasource": "$data_source",
-      "fontSize": "100%",
+      "collapsed": true,
       "gridPos": {
-        "h": 7,
+        "h": 1,
         "w": 24,
         "x": 0,
         "y": 13
       },
-      "id": 65,
-      "interval": "",
-      "links": [],
-      "pageSize": 20,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": null,
-        "desc": false
-      },
-      "styles": [
+      "id": 67,
+      "panels": [
         {
-          "alias": "Time",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "hidden"
-        },
-        {
-          "alias": "Transactions",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+          "columns": [],
+          "datasource": "$data_source",
+          "fontSize": "100%",
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 14
+          },
+          "id": 65,
+          "interval": "",
+          "links": [],
+          "pageSize": 20,
+          "scroll": true,
+          "showHeader": true,
+          "sort": {
+            "col": null,
+            "desc": false
+          },
+          "styles": [
+            {
+              "alias": "Time",
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Time",
+              "type": "hidden"
+            },
+            {
+              "alias": "Transactions",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "transaction",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            },
+            {
+              "alias": "Requests",
+              "colorMode": "cell",
+              "colors": [
+                "#5195ce",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": null,
+              "mappingType": 1,
+              "pattern": "requests",
+              "thresholds": [],
+              "type": "number",
+              "unit": "locale"
+            },
+            {
+              "alias": "Requests Pass",
+              "colorMode": "cell",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": null,
+              "mappingType": 1,
+              "pattern": "requestsPass",
+              "thresholds": [],
+              "type": "number",
+              "unit": "locale"
+            },
+            {
+              "alias": "Requests Fail",
+              "colorMode": "cell",
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": null,
+              "mappingType": 1,
+              "pattern": "requestsFail",
+              "thresholds": [],
+              "type": "number",
+              "unit": "locale"
+            },
+            {
+              "alias": "Avg Time",
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "avg",
+              "thresholds": [
+                "5000",
+                "30000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            },
+            {
+              "alias": "Min Time",
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "min",
+              "thresholds": [
+                "5000",
+                "30000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            },
+            {
+              "alias": "Max Time",
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "max",
+              "thresholds": [
+                "5000",
+                "30000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            },
+            {
+              "alias": "90th Percentile",
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "pct90",
+              "thresholds": [
+                "5000",
+                "30000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            },
+            {
+              "alias": "95th Percentile",
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "pct95",
+              "thresholds": [
+                "5000",
+                "30000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            },
+            {
+              "alias": "99th Percentile",
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "pct99",
+              "thresholds": [
+                "5000",
+                "30000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            },
+            {
+              "alias": "",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            }
           ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "transaction",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "Requests",
-          "colorMode": "cell",
-          "colors": [
-            "#5195ce",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
+          "targets": [
+            {
+              "alias": "$tag_responseCode",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "responseCode"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "hide": false,
+              "measurement": "jmeter",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"count\") as requests  FROM \"$measurement_name\" WHERE (\"transaction\" != 'all' AND \"application\" =~ /^$application$/ AND \"statut\" = 'all') AND $timeFilter GROUP BY \"transaction\"",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "count"
+                    ],
+                    "type": "field"
+                  }
+                ],
+                [
+                  {
+                    "params": [
+                      "responseMessage"
+                    ],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "application",
+                  "operator": "=~",
+                  "value": "/^$application$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "responseCode",
+                  "operator": "!~",
+                  "value": "/^$/"
+                }
+              ]
+            },
+            {
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"count\") as requestsPass  FROM \"$measurement_name\" WHERE (\"transaction\" != 'all' AND \"application\" =~ /^$application$/ AND \"statut\" = 'ok') AND $timeFilter GROUP BY \"transaction\"",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"count\") as requestsFail  FROM \"$measurement_name\" WHERE (\"transaction\" != 'all' AND \"application\" =~ /^$application$/ AND \"statut\" = 'ko') AND $timeFilter GROUP BY \"transaction\"",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT min(\"min\") as min, max(\"max\")  as max, mean(\"avg\") as avg FROM \"$measurement_name\" WHERE (\"transaction\" != 'all' AND \"application\" =~ /^$application$/) AND $timeFilter GROUP BY \"transaction\"",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
           ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": null,
-          "mappingType": 1,
-          "pattern": "requests",
-          "thresholds": [],
-          "type": "number",
-          "unit": "none"
-        },
-        {
-          "alias": "Requests Pass",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": null,
-          "mappingType": 1,
-          "pattern": "requestsPass",
-          "thresholds": [],
-          "type": "number",
-          "unit": "none"
-        },
-        {
-          "alias": "Requests Fail",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": null,
-          "mappingType": 1,
-          "pattern": "requestsFail",
-          "thresholds": [],
-          "type": "number",
-          "unit": "none"
-        },
-        {
-          "alias": "Avg Time",
-          "colorMode": "value",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "avg",
-          "thresholds": [
-            "5000",
-            "30000"
-          ],
-          "type": "number",
-          "unit": "ms"
-        },
-        {
-          "alias": "Min Time",
-          "colorMode": "value",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "min",
-          "thresholds": [
-            "5000",
-            "30000"
-          ],
-          "type": "number",
-          "unit": "ms"
-        },
-        {
-          "alias": "Max Time",
-          "colorMode": "value",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "max",
-          "thresholds": [
-            "5000",
-            "30000"
-          ],
-          "type": "number",
-          "unit": "ms"
-        },
-        {
-          "alias": "90th Percentile",
-          "colorMode": "value",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "pct90",
-          "thresholds": [
-            "5000",
-            "30000"
-          ],
-          "type": "number",
-          "unit": "ms"
-        },
-        {
-          "alias": "95th Percentile",
-          "colorMode": "value",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "pct95",
-          "thresholds": [
-            "5000",
-            "30000"
-          ],
-          "type": "number",
-          "unit": "ms"
-        },
-        {
-          "alias": "99th Percentile",
-          "colorMode": "value",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "pct99",
-          "thresholds": [
-            "5000",
-            "30000"
-          ],
-          "type": "number",
-          "unit": "ms"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
+          "title": "Summary",
+          "transform": "table",
+          "type": "table"
         }
       ],
-      "targets": [
-        {
-          "alias": "$tag_responseCode",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "responseCode"
-              ],
-              "type": "tag"
-            }
-          ],
-          "hide": false,
-          "measurement": "jmeter",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"count\") as requests  FROM \"$measurement_name\" WHERE (\"transaction\" != 'all' AND \"application\" =~ /^$application$/ AND \"statut\" = 'all') AND $timeFilter GROUP BY \"transaction\"",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "table",
-          "select": [
-            [
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "field"
-              }
-            ],
-            [
-              {
-                "params": [
-                  "responseMessage"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "application",
-              "operator": "=~",
-              "value": "/^$application$/"
-            },
-            {
-              "condition": "AND",
-              "key": "responseCode",
-              "operator": "!~",
-              "value": "/^$/"
-            }
-          ]
-        },
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"count\") as requestsPass  FROM \"$measurement_name\" WHERE (\"transaction\" != 'all' AND \"application\" =~ /^$application$/ AND \"statut\" = 'ok') AND $timeFilter GROUP BY \"transaction\"",
-          "rawQuery": true,
-          "refId": "B",
-          "resultFormat": "table",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"count\") as requestsFail  FROM \"$measurement_name\" WHERE (\"transaction\" != 'all' AND \"application\" =~ /^$application$/ AND \"statut\" = 'ko') AND $timeFilter GROUP BY \"transaction\"",
-          "rawQuery": true,
-          "refId": "C",
-          "resultFormat": "table",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT min(\"min\") as min, max(\"max\")  as max, mean(\"avg\") as avg FROM \"$measurement_name\" WHERE (\"transaction\" != 'all' AND \"application\" =~ /^$application$/) AND $timeFilter GROUP BY \"transaction\"",
-          "rawQuery": true,
-          "refId": "D",
-          "resultFormat": "table",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "Summary",
-      "transform": "table",
-      "type": "table"
+      "title": "Summary Report",
+      "type": "row"
     },
     {
       "collapsed": true,
@@ -1455,7 +1469,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 14
       },
       "id": 64,
       "panels": [
@@ -1475,7 +1489,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 21
+            "y": 15
           },
           "height": "",
           "id": 40,
@@ -1630,7 +1644,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 15
       },
       "id": 34,
       "panels": [
@@ -2130,7 +2144,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 16
       },
       "id": 35,
       "panels": [
@@ -2756,7 +2770,7 @@
           "decimals": 0,
           "editable": true,
           "error": false,
-          "format": "none",
+          "format": "locale",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
@@ -2884,7 +2898,7 @@
           "decimals": 0,
           "editable": true,
           "error": false,
-          "format": "none",
+          "format": "locale",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
@@ -3547,5 +3561,5 @@
   "timezone": "browser",
   "title": "Tsoft Load Test Dashboard",
   "uid": "3yTe3Bcik",
-  "version": 18
+  "version": 20
 }

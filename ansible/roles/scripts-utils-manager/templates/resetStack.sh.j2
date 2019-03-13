@@ -1,2 +1,4 @@
 #!/bin/sh
+docker stack rm jmeter-stack
+sleep 5s
 docker stack deploy -c /home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/jmeter-stack-compose.yml jmeter-stack
