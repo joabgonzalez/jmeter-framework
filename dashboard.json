@@ -21,37 +21,37 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "5.4.3"
+      "version": "6.1.4"
     },
     {
       "type": "panel",
       "id": "graph",
       "name": "Graph",
-      "version": "5.0.0"
+      "version": ""
     },
     {
       "type": "datasource",
       "id": "influxdb",
       "name": "InfluxDB",
-      "version": "5.0.0"
+      "version": "1.0.0"
     },
     {
       "type": "panel",
       "id": "singlestat",
       "name": "Singlestat",
-      "version": "5.0.0"
+      "version": ""
     },
     {
       "type": "panel",
       "id": "table",
       "name": "Table",
-      "version": "5.0.0"
+      "version": ""
     },
     {
       "type": "panel",
       "id": "text",
       "name": "Text",
-      "version": "5.0.0"
+      "version": ""
     }
   ],
   "annotations": {
@@ -97,10 +97,10 @@
   },
   "description": "This dashboard shows live load test metrics provided by JMeter",
   "editable": true,
-  "gnetId": 8425,
+  "gnetId": 9915,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1552502649142,
+  "iteration": 1555425336928,
   "links": [],
   "panels": [
     {
@@ -320,7 +320,6 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": false,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -363,7 +362,7 @@
       ],
       "datasource": "$data_source",
       "decimals": 0,
-      "format": "none",
+      "format": "locale",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -796,7 +795,6 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": false,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -3401,7 +3399,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 16,
+  "schemaVersion": 18,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -3412,7 +3410,9 @@
           "value": "influxdb"
         },
         "hide": 2,
+        "includeAll": false,
         "label": null,
+        "multi": false,
         "name": "data_source",
         "options": [],
         "query": "influxdb",
@@ -3559,7 +3559,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Tsoft Load Test Dashboard",
+  "title": "Tsoft Dashboard",
   "uid": "3yTe3Bcik",
-  "version": 20
+  "version": 2
 }
