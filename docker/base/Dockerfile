@@ -5,9 +5,11 @@ FROM openjdk:8-jre-alpine
 ARG JMETER_VERSION=3.3
 
 # Dependencias
-RUN apk add --update git unzip && \
-    rm -rf /var/cache/apk/* \
-    && mkdir /performance
+RUN apk add --update tzdata git unzip && \
+    rm -rf /var/cache/apk/* && \
+    cp -v /usr/share/zoneinfo/America/Santiago /etc/localtime && \
+    echo "America/Santiago" > /etc/timezone && \
+    mkdir /performances
 
 # Espacio de trabajo
 WORKDIR /performance
