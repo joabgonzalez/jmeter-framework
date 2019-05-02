@@ -1,7 +1,8 @@
 #!/bin/bash
-NAME=$(echo jmeter-stack_influxdb | cut -d '_' -f 2)
-PROCESS=$(docker ps | grep "tsoftglobal/jmeter:$NAME" | awk '{ print $1 }')
+SERVICE="jmeter-stack_influxdb"
+NAME=$(echo $SERVICE | cut -d '_' -f 2)
+PROCESS=$(docker ps | grep "$NAME" | awk '{ print $1 }')
 echo "##################################################################################################"
-docker ps --filter name=^/jmeter-stack_influxdb.*?$
+docker ps --filter name=^/$SERVICE.*?$
 echo "##################################################################################################"
 docker exec -it $PROCESS influx

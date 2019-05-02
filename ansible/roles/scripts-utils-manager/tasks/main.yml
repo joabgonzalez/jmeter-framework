@@ -15,3 +15,6 @@
 
 - name: Copiar archivo para reiniciar el stack
   template: src=resetStack.sh.j2 dest=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils/resetStack.sh owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
+
+- name: Copiar archivo para acceder a influxdb
+  copy: src=influx.sh dest=/home/{{ hostvars['manager01']['ansible_ssh_user'] }}/performance/utils owner={{ hostvars['manager01']['ansible_ssh_user'] }} group={{ hostvars['manager01']['ansible_ssh_user'] }}
